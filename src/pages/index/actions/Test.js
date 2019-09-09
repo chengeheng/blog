@@ -1,8 +1,6 @@
-export const changeText = text => {
-    return {
-        type: "ADD_TO_DATA",
-        payload: {
-            text: text
-        }
-    };
-};
+import cghFetch from "./../../../utils/request";
+export const getUserData = stateId =>
+	cghFetch(stateId, {
+		url: "localhost:8030/users/loadData",
+		method: "GET"
+	});

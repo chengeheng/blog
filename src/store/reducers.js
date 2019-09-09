@@ -5,22 +5,23 @@ import { combineReducers } from "redux";
 // 默认值
 import defaultState from "./state.js";
 
-const ADD_TO_DATA = "ADD_TO_DATA";
+const UPDATE_DATA = "UPDATE_DATA";
 const dataReducer = function(state = defaultState.data, action) {
-    switch (action.type) {
-        case ADD_TO_DATA: {
-            return {
-                ...state.data,
-                ...action.payload
-            };
-        }
+	switch (action.type) {
+		case UPDATE_DATA: {
+			console.log(action.payload);
+			return {
+				...state.data,
+				...action.payload
+			};
+		}
 
-        default:
-            return state;
-    }
+		default:
+			return state;
+	}
 };
 // 导出所有reducer
 export default combineReducers({
-    data: dataReducer
-    // user: userReducer
+	data: dataReducer
+	// user: userReducer
 });
