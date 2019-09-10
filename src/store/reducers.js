@@ -5,14 +5,13 @@ import { combineReducers } from "redux";
 // 默认值
 import defaultState from "./state.js";
 
-const UPDATE_DATA = "UPDATE_DATA";
+export const UPDATE_DATA = "UPDATE_DATA";
 const dataReducer = function(state = defaultState.data, action) {
 	switch (action.type) {
 		case UPDATE_DATA: {
-			console.log(action.payload);
 			return {
-				...state.data,
-				...action.payload
+				...state,
+				[action.stateId]: action.data
 			};
 		}
 
