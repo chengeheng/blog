@@ -1,7 +1,16 @@
 import store from "./../store";
-import { UPDATE_DATA } from "./../store/reducers";
+import {
+	UPDATE_DATA,
+	FETCH_LOADING_SUCCESS,
+	FETCH_LOADING_FAIL
+} from "./../store/reducers";
 import { isJson } from "./utils";
 const request = async (stateId, getResponse, errFn) => {
+	dispatch({
+		type: FETCH_LOADING_SUCCESS,
+		stateId,
+		data: true
+	});
 	const { body } = await getResponse();
 
 	if (body.code === 0) {
@@ -17,6 +26,15 @@ const request = async (stateId, getResponse, errFn) => {
 			data: null
 		});
 	}
+
+	setTimeout(() => {
+		dispatch({
+			type: FETCH_LOADING_FAIL,
+			stateId,
+			data: false
+		});
+	}, 0);
+
 	if (body.code === 1) {
 		errFn(body.message);
 	}

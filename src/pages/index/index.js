@@ -4,24 +4,28 @@ import { withRouter } from "react-router-dom";
 import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserData } from "./actions";
+import { Spin } from "antd";
 
 const MAIN_DATA = "MAIN_DATA";
 
 const IndexPage = props => {
 	const dispatch = useDispatch();
 	const localState = useSelector(state => ({
-		dateSource: state.data[MAIN_DATA] ? state.data[MAIN_DATA] : []
+		data: state.data[MAIN_DATA] ? state.data[MAIN_DATA] : [],
+		getting: state.loading[MAIN_DATA] ? state.loading[MAIN_DATA] : false
 	}));
-	console.log(localState.dateSource);
+	const { getting } = localState;
 	const clickHandle = () => {};
 	useEffect(() => {
 		dispatch(getUserData(MAIN_DATA));
 	}, [dispatch]);
 	return (
 		<div>
-			<Button type="primary" onClick={clickHandle}>
-				啦啦啦
-			</Button>
+			<Spin spinning={getting}>
+				<Button type="primary" onClick={clickHandle}>
+					啦啦啦
+				</Button>
+			</Spin>
 		</div>
 	);
 };

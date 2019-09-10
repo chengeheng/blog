@@ -6,5 +6,6 @@
 // 异步数据：infoList（将来用异步接口获取）
 export default {
 	user: {},
-	data: {}
+	data: {},
+	loading: {}
 };

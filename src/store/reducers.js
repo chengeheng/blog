@@ -6,6 +6,8 @@ import { combineReducers } from "redux";
 import defaultState from "./state.js";
 
 export const UPDATE_DATA = "UPDATE_DATA";
+export const FETCH_LOADING_SUCCESS = "FETCH_LOADING_SUCCESS";
+export const FETCH_LOADING_FAIL = "FETCH_LOADING_FAIL";
 const dataReducer = function(state = defaultState.data, action) {
 	switch (action.type) {
 		case UPDATE_DATA: {
@@ -19,8 +21,27 @@ const dataReducer = function(state = defaultState.data, action) {
 			return state;
 	}
 };
+const loadingReducer = function(state = {}, action) {
+	switch (action.type) {
+		case FETCH_LOADING_SUCCESS: {
+			return {
+				...state,
+				[action.stateId]: action.data
+			};
+		}
+		case FETCH_LOADING_FAIL: {
+			return {
+				...state,
+				[action.stateId]: action.data
+			};
+		}
+		default:
+			return state;
+	}
+};
 // 导出所有reducer
 export default combineReducers({
-	data: dataReducer
+	data: dataReducer,
+	loading: loadingReducer
 	// user: userReducer
 });
