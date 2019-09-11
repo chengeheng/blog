@@ -38,7 +38,7 @@ const request = async (stateId, getResponse, errFn) => {
 	if (body.code === 1) {
 		errFn(body.message);
 	}
-	return body.message;
+	return body.data;
 };
 
 const dispatch = action => {
