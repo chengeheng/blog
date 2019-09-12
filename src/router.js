@@ -10,11 +10,13 @@ export const routers = [
 		children: [
 			{
 				path: "/a",
-				component: A
+				component: A,
+				title: "a"
 			},
 			{
 				path: "/b",
-				component: B
+				component: B,
+				title: "b"
 			}
 		]
 	}
