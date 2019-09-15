@@ -1,0 +1,79 @@
+@import "./../../theme.less";
+.layout {
+	height: 100%;
+	width: 100%;
+
+	.head {
+		background: transparent;
+	}
+	.main {
+		height: 64px;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		background-color: @empty_Color;
+		.logo {
+			width: 200px;
+			height: 64px;
+			font-weight: 600;
+			font-size: 40px;
+			color: @base_Color;
+		}
+		.blank {
+			flex: 1;
+		}
+		.menu {
+			width: 800px;
+			height: 64px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			.menu_item {
+				width: 80px;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.menu_name {
+					background-color: @empty_Color;
+					height: 34px;
+					width: 60px;
+					border-radius: 5px;
+					line-height: 34px;
+					font-weight: bold;
+					cursor: pointer;
+				}
+			}
+			.menu_item_selected {
+				width: 80px;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.menu_name {
+					background-color: @base_Color;
+					height: 34px;
+					width: 60px;
+					border-radius: 5px;
+					line-height: 34px;
+					font-weight: bold;
+					color: @empty_Color;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.body {
+		flex: 1;
+	}
+}
+:global {
+	.ant-layout-header {
+		padding: 0;
+	}
+}

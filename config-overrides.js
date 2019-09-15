@@ -7,14 +7,16 @@ const {
 const path = require("path");
 
 module.exports = override(
-	fixBabelImports("antd", {
+	fixBabelImports("import", {
 		libraryName: "antd",
 		libraryDirectory: "es",
-		style: "css"
+		style: true
 	}),
 	addLessLoader({
-		javascriptEnabled: true,
-		modifyVars: { "@primary-color": "#1DA57A" }
+		modifyVars: {
+			"@primary-color": "#F5A623"
+		},
+		javascriptEnabled: true
 	}),
 	babelInclude([path.resolve("src")])
 );

@@ -1,43 +1,63 @@
-import React, { useEffect, useMemo } from "react";
-// import styles from "./index.module.less";
+import React, { useState, useEffect, useMemo } from "react";
+import styles from "./index.module.less";
 import { withRouter } from "react-router-dom";
 import { parseRoute } from "./../../parseRoute";
-import { Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserData } from "./actions";
-import { Spin, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 const { Header, Content } = Layout;
 
 const MAIN_DATA = "MAIN_DATA";
 
 const IndexPage = props => {
+	const [selectedKey, setSelectedKey] = useState("/home"); // 选中key
+
 	const { routes, history } = props;
-	const content = useMemo(() => parseRoute(routes));
+	const content = useMemo(() => parseRoute(routes), [routes]);
 	const dispatch = useDispatch();
-	console.log(routes);
 	const localState = useSelector(state => ({
 		data: state.data[MAIN_DATA] ? state.data[MAIN_DATA] : [],
 		getting: state.loading[MAIN_DATA] ? state.loading[MAIN_DATA] : false
 	}));
 	const { getting } = localState;
 	useEffect(() => {
-		dispatch(getUserData(MAIN_DATA));
+		// dispatch(getUserData(MAIN_DATA));
+		setSelectedKey(window.location.pathname);
 	}, [dispatch]);
 
 	// 菜单单击事件
-	const handleClick = e => {
-		history.push(e.key);
+	const handleClick = key => {
+		history.push(key);
+		setSelectedKey(key);
 	};
 	return (
-		<Layout>
-			<Header>
-				<Menu onClick={handleClick} mode="horizontal">
-					{routes.map(route => (
-						<Menu.Item key={route.path}>{route.title}</Menu.Item>
-					))}
-				</Menu>
+		<Layout className={styles.layout}>
+			<Header className={styles.head}>
+				<div className={styles.main}>
+					<div className={styles.logo}>CGH</div>
+					<div className={styles.blank}></div>
+					<div className={styles.menu}>
+						{routes.map(item => (
+							<div
+								key={item.path}
+								className={
+									item.path == selectedKey
+										? styles.menu_item_selected
+										: styles.menu_item
+								}
+							>
+								<div
+									onClick={() => handleClick(item.path)}
+									className={styles.menu_name}
+								>
+									{item.title}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</Header>
-			<Content>{content}</Content>
+			<Content className={styles.body}>{content}</Content>
 		</Layout>
 	);
 };
