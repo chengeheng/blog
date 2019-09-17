@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import styles from "./index.module.less";
 import { withRouter } from "react-router-dom";
-import { parseRoute } from "./../../parseRoute";
+import { parseRoute } from "parseRoute";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserData } from "./actions";
 import { Layout, Menu } from "antd";

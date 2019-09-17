@@ -2,21 +2,21 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	background-color: @background_Color;
 	height: 100%;
 	overflow: auto;
 	.body {
-		height: 100%;
 		width: 100%;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		max-width: 900px;
+		// max-width: 900px;
+		max-width: calc(100% - 60px);
 		background-color: @empty_Color;
-		overflow: auto;
+		// overflow: auto;
 		.banners {
 			padding: 5px 0;
 			height: 600px;
