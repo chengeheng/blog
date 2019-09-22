@@ -2,10 +2,10 @@
 .layout {
 	height: 100%;
 	width: 100%;
+	background-image: url("../../images/bg.jpg");
+	display: flex;
+	flex-direction: column;
 
-	.head {
-		background: transparent;
-	}
 	.main {
 		height: 64px;
 		width: 100%;
@@ -14,7 +14,8 @@
 		text-align: center;
 		align-items: center;
 		justify-content: center;
-		background-color: @empty_Color;
+		background-color: @background_Color;
+		border-bottom: 1px solid rgba(128, 128, 128, 0.502);
 		.logo {
 			width: 200px;
 			height: 64px;
@@ -39,7 +40,6 @@
 				align-items: center;
 				justify-content: center;
 				.menu_name {
-					background-color: @empty_Color;
 					height: 34px;
 					width: 60px;
 					border-radius: 5px;
@@ -61,7 +61,7 @@
 					border-radius: 5px;
 					line-height: 34px;
 					font-weight: bold;
-					color: @empty_Color;
+					color: @background_Color;
 					cursor: pointer;
 				}
 			}
@@ -70,6 +70,9 @@
 
 	.body {
 		flex: 1;
+		display: flex;
+		overflow: hidden;
+		width: 100%;
 	}
 }
 :global {

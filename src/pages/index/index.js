@@ -31,34 +31,32 @@ const IndexPage = props => {
 		setSelectedKey(key);
 	};
 	return (
-		<Layout className={styles.layout}>
-			<Header className={styles.head}>
-				<div className={styles.main}>
-					<div className={styles.logo}>CGH</div>
-					<div className={styles.blank}></div>
-					<div className={styles.menu}>
-						{routes.map(item => (
+		<div className={styles.layout}>
+			<div className={styles.main}>
+				<div className={styles.logo}>CGH</div>
+				<div className={styles.blank}></div>
+				<div className={styles.menu}>
+					{routes.map(item => (
+						<div
+							key={item.path}
+							className={
+								item.path == selectedKey
+									? styles.menu_item_selected
+									: styles.menu_item
+							}
+						>
 							<div
-								key={item.path}
-								className={
-									item.path == selectedKey
-										? styles.menu_item_selected
-										: styles.menu_item
-								}
+								onClick={() => handleClick(item.path)}
+								className={styles.menu_name}
 							>
-								<div
-									onClick={() => handleClick(item.path)}
-									className={styles.menu_name}
-								>
-									{item.title}
-								</div>
+								{item.title}
 							</div>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
-			</Header>
-			<Content className={styles.body}>{content}</Content>
-		</Layout>
+			</div>
+			<div className={styles.body}>{content}</div>
+		</div>
 	);
 };
 

@@ -12,7 +12,6 @@ const request = async (stateId, getResponse, errFn) => {
 		data: true
 	});
 	const { body } = await getResponse();
-
 	if (body.code === 0) {
 		dispatch({
 			type: UPDATE_DATA,
@@ -26,6 +25,11 @@ const request = async (stateId, getResponse, errFn) => {
 			data: null
 		});
 	}
+	// dispatch({
+	// 	type: UPDATE_DATA,
+	// 	stateId,
+	// 	data: body
+	// });
 
 	setTimeout(() => {
 		dispatch({
