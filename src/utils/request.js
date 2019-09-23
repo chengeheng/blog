@@ -12,7 +12,7 @@ const request = async (stateId, getResponse, errFn) => {
 		data: true
 	});
 	const { body } = await getResponse();
-	if (body.code === 0) {
+	if (body.code === 200) {
 		dispatch({
 			type: UPDATE_DATA,
 			stateId,

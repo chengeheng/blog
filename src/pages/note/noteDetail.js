@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import styles from "./index.module.less";
+import styles from "./noteDetail.module.less";
 import { useSelector, useDispatch } from "react-redux";
-import ReactMarkdown from "react-markdown";
-import { getNote } from "./actions";
+import { getMdNote } from "./actions";
 import marked from "marked";
 import hljs from "highlight.js";
-import { Spin } from "antd";
+import { Spin, Button } from "antd";
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
@@ -21,35 +20,34 @@ marked.setOptions({
 });
 const DETAIL_NOTE = "DETAIL_NOTE";
 
-const NoteDetail = () => {
+const NoteDetail = props => {
 	const dispatch = useDispatch();
+	const { name, jumpToList } = props;
 	const localState = useSelector(state => ({
 		data: state.data[DETAIL_NOTE] ? state.data[DETAIL_NOTE] : "",
 		getting: !state.data[DETAIL_NOTE]
 	}));
 	const { data, getting } = localState;
 	useEffect(() => {
-		dispatch(getNote(DETAIL_NOTE));
-	}, []);
+		dispatch(getMdNote(DETAIL_NOTE, name));
+	}, [props]);
 
 	return (
-		<Spin spinning={getting}>
-			{/* <iframe
-					style={{ width: "100%", height: "100%" }}
-					src="http://127.0.0.1:8030/notes/get"
-				></iframe> */}
-			{/* <div
-					style={{ width: "100%", height: "100%" }}
-					dangerouslySetInnerHTML={{ __html: localState.data }}
-				></div> */}
-			{/* <ReactMarkdown source={localState.data} /> */}
-			<div
-				className="content-md"
-				dangerouslySetInnerHTML={{
-					__html: marked(data)
-				}}
-			/>
-		</Spin>
+		<div className={styles.main}>
+			<div className={styles.toolBar}>
+				<div className={styles.detail_return}>
+					<Button onClick={jumpToList}>返回</Button>
+				</div>
+			</div>
+			<Spin spinning={getting}>
+				<div
+					className="content-md"
+					dangerouslySetInnerHTML={{
+						__html: marked(data)
+					}}
+				/>
+			</Spin>
+		</div>
 	);
 };
 
