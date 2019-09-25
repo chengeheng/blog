@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./index.module.less";
 import { Tabs } from "antd";
-import { useSelector, useDispatch } from "react-redux";
-import { getNote } from "./actions";
 import NoteMain from "./main";
 import NoteDetail from "./noteDetail";
 const TabPane = Tabs.TabPane;

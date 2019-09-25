@@ -1,5 +1,4 @@
 import React from "react";
-import { Switch } from "antd";
 import styles from "./index.module.less";
 const HomePage = () => {
 	return (
