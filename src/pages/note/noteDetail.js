@@ -31,7 +31,7 @@ const NoteDetail = props => {
 	const { data, getting } = localState;
 	useEffect(() => {
 		dispatch(getMdNote(DETAIL_NOTE, name));
-	}, [props]);
+	}, [dispatch, name, props]);
 
 	return (
 		<div className={styles.main}>
