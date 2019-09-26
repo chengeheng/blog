@@ -1,23 +1,29 @@
 import { transComponent } from "./parseRoute";
-import IndexPage from "./pages/index";
 import Home from "./pages/home";
 import Note from "./pages/note";
-
+import NoteDetail from "./pages/note/noteDetail";
 export const routers = [
 	{
 		path: "/",
-		component: IndexPage,
+		component: Home,
+		title: "Home"
+	},
+	{
+		path: "/note",
+		component: Note,
+		title: "Note",
 		children: [
 			{
-				path: "/home",
-				component: Home,
-				title: "Home"
-			},
-			{
-				path: "/note",
-				component: Note,
+				path: "/:id",
+				component: NoteDetail,
 				title: "Note"
 			}
 		]
+	},
+	{
+		path: "/note/:id",
+		component: NoteDetail,
+		title: "Note"
 	}
-].map(transComponent);
+];
+// ].map(transComponent);

@@ -4,10 +4,11 @@ import styles from "./index.module.less";
 const HomePage = () => {
 	return (
 		<div className={styles.main}>
-			<div className={styles.body}>
-				<div className={styles.banners}>banners</div>
-				<div className={styles.introduction}>introduction</div>
+			<div className={styles.left}>
+				<div className={styles.head_portrait} />
+				<div className={styles.introduce}></div>
 			</div>
+			<div className={styles.introduction}>introduction</div>
 		</div>
 	);
 };

@@ -23,6 +23,7 @@ const DETAIL_NOTE = "DETAIL_NOTE";
 const NoteDetail = props => {
 	const dispatch = useDispatch();
 	const { name, jumpToList } = props;
+	console.log(props);
 	const localState = useSelector(state => ({
 		data: state.data[DETAIL_NOTE] ? state.data[DETAIL_NOTE] : "",
 		getting: !state.data[DETAIL_NOTE]

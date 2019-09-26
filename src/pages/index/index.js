@@ -2,12 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import styles from "./index.module.less";
 import { withRouter } from "react-router-dom";
 import { parseRoute } from "parseRoute";
-import { useSelector, useDispatch } from "react-redux";
-import { getUserData } from "./actions";
-import { Layout, Menu } from "antd";
-const { Header, Content } = Layout;
-
-const MAIN_DATA = "MAIN_DATA";
+import { useDispatch } from "react-redux";
 
 const IndexPage = props => {
 	const [selectedKey, setSelectedKey] = useState("/home"); // 选中key
@@ -15,11 +10,7 @@ const IndexPage = props => {
 	const { routes, history } = props;
 	const content = useMemo(() => parseRoute(routes), [routes]);
 	const dispatch = useDispatch();
-	const localState = useSelector(state => ({
-		data: state.data[MAIN_DATA] ? state.data[MAIN_DATA] : [],
-		getting: state.loading[MAIN_DATA] ? state.loading[MAIN_DATA] : false
-	}));
-	const { getting } = localState;
+
 	useEffect(() => {
 		// dispatch(getUserData(MAIN_DATA));
 		setSelectedKey(window.location.pathname);

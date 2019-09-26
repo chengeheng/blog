@@ -6,7 +6,8 @@ export const parseRoute = routers =>
 		<Route
 			key={router.path}
 			path={router.path}
-			exact={!router.children}
+			// exact={!router.children}
+			exact
 			component={router.component}
 		/>
 	));

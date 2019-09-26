@@ -1,29 +1,36 @@
 @import "./../../theme.less";
 .main {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	background-color: @empty_Color;
 	height: 100%;
 	width: 100%;
 	overflow: auto;
-	.body {
-		width: 100%;
-		flex: 1;
+
+	.left {
+		padding: 5px 0 5px 15px;
+		height: 100%;
+		width: 40%;
+		background: url("../../images/home_cover_one.jpg") no-repeat;
+		background-size: 100% 100%;
 		display: flex;
 		flex-direction: column;
-		max-width: 900px;
-		padding: 10px;
-		background-color: @background_Color;
-		.banners {
-			padding: 5px 0;
-			height: 600px;
-			width: 100%;
+		.head_portrait {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background-color: red;
+			margin-top: 25%;
 		}
-		.introduction {
-			padding: 5px;
+		.introduce {
 			width: 100%;
-			height: 1400px;
+			height: 60px;
 		}
+	}
+	.introduction {
+		padding: 5px;
+		width: 60%;
+		height: 100%;
 	}
 }
