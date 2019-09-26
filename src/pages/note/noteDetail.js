@@ -22,32 +22,41 @@ const DETAIL_NOTE = "DETAIL_NOTE";
 
 const NoteDetail = props => {
 	const dispatch = useDispatch();
-	const { name, jumpToList } = props;
-	console.log(props);
+	const { match } = props;
+	const { params } = match;
+	const { id } = params;
 	const localState = useSelector(state => ({
 		data: state.data[DETAIL_NOTE] ? state.data[DETAIL_NOTE] : "",
 		getting: !state.data[DETAIL_NOTE]
 	}));
 	const { data, getting } = localState;
 	useEffect(() => {
-		dispatch(getMdNote(DETAIL_NOTE, name));
-	}, [dispatch, name, props]);
+		dispatch(getMdNote(DETAIL_NOTE, id));
+	}, [dispatch, id, props]);
 
 	return (
 		<div className={styles.main}>
-			<div className={styles.toolBar}>
-				<div className={styles.detail_return}>
-					<Button onClick={jumpToList}>返回</Button>
+			<div className={styles.body}>
+				<div className={styles.toolBar}>
+					<div className={styles.detail_return}>
+						<Button
+							onClick={() => {
+								window.history.back();
+							}}
+						>
+							返回
+						</Button>
+					</div>
 				</div>
+				<Spin spinning={getting}>
+					<div
+						className="content-md"
+						dangerouslySetInnerHTML={{
+							__html: marked(data)
+						}}
+					/>
+				</Spin>
 			</div>
-			<Spin spinning={getting}>
-				<div
-					className="content-md"
-					dangerouslySetInnerHTML={{
-						__html: marked(data)
-					}}
-				/>
-			</Spin>
 		</div>
 	);
 };

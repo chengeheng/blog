@@ -15,11 +15,11 @@ const NoteMain = props => {
 		dataSource: state.data[MAIN_NOTE] ? state.data[MAIN_NOTE] : [],
 		getting: !state.data[MAIN_NOTE]
 	}));
-	const { itemClick } = props;
 	const { dataSource, getting } = localState;
 	useEffect(() => {
 		dispatch(getNote(MAIN_NOTE));
 	}, []);
+	console.log(dataSource);
 	return (
 		<div className={styles.mian_note}>
 			<Button className={styles.note_add}>新增文档</Button>
@@ -28,7 +28,7 @@ const NoteMain = props => {
 				{dataSource.map((item, index) => (
 					<NoteItem
 						key={index + 1}
-						onClick={() => itemClick(item.name)}
+						id={item._id}
 						{...item}
 					></NoteItem>
 				))}
