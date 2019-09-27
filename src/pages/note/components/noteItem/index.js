@@ -5,7 +5,7 @@ import moment from "moment";
 
 const NoteDetail = props => {
 	const { name, summary, createTime, author, onClick, id } = props;
-	console.log(id);
+
 	return (
 		<div className={styles.main}>
 			<div className={styles.title}>

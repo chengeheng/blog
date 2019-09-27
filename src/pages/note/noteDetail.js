@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import styles from "./noteDetail.module.less";
 import { useSelector, useDispatch } from "react-redux";
 import { getMdNote } from "./actions";
@@ -22,7 +23,8 @@ const DETAIL_NOTE = "DETAIL_NOTE";
 
 const NoteDetail = props => {
 	const dispatch = useDispatch();
-	const { match } = props;
+	const { match, history } = props;
+
 	const { params } = match;
 	const { id } = params;
 	const localState = useSelector(state => ({
@@ -41,7 +43,7 @@ const NoteDetail = props => {
 					<div className={styles.detail_return}>
 						<Button
 							onClick={() => {
-								window.history.back();
+								history.goBack();
 							}}
 						>
 							返回
@@ -61,4 +63,4 @@ const NoteDetail = props => {
 	);
 };
 
-export default NoteDetail;
+export default withRouter(NoteDetail);

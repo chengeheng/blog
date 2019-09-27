@@ -1,0 +1,41 @@
+@import "../../../../theme.less";
+
+.main {
+	height: 100%;
+	width: 100%;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid #dedede;
+	.title {
+		font-size: 24px;
+		height: 80px;
+	}
+	.banners {
+		flex: 1;
+		padding: 3px;
+		border: 1px solid #dedede;
+		background: url("../../../../images/home_cover_two.png") 100% 100%;
+	}
+	.bottom {
+		height: 60px;
+		display: flex;
+		padding: 5px 0;
+		display: flex;
+		align-items: center;
+		.bottom_name {
+			margin-right: 10px;
+		}
+		.bottom_version {
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			padding: 2px 4px;
+			color: #fc5185;
+			background: #eee;
+			border-radius: 3px;
+			font-size: 14px;
+			line-height: 14px;
+			height: fit-content;
+		}
+	}
+}
