@@ -22,10 +22,11 @@ module.exports = override(
 	}),
 	babelInclude([path.resolve("src"), path.resolve("node_modules/cgh-ui")]),
 	addWebpackResolve({
-		extensions: [".js", ".jsx", ".json", ".css", ".less"],
+		extensions: [".js", ".jsx", ".json", ".css", ".less", ".jpg", ".png"],
 		alias: {
 			// 配置绝对路径
-			style: path.resolve(__dirname, "src/style")
+			style: path.resolve(__dirname, "src/style"),
+			images: path.resolve(__dirname, "src/images")
 		}
 	})
 );
