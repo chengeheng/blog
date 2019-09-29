@@ -9,7 +9,7 @@ import { getNote } from "./actions";
 
 const MAIN_NOTE = "MAIN_NOTE";
 
-const NoteMain = props => {
+const NoteMain = _ => {
 	const dispatch = useDispatch();
 	const localState = useSelector(state => ({
 		dataSource: state.data[MAIN_NOTE] ? state.data[MAIN_NOTE] : [],
@@ -18,8 +18,7 @@ const NoteMain = props => {
 	const { dataSource, getting } = localState;
 	useEffect(() => {
 		dispatch(getNote(MAIN_NOTE));
-	}, []);
-	console.log(dataSource);
+	}, [dispatch]);
 	return (
 		<div className={styles.mian_note}>
 			<Button className={styles.note_add}>新增文档</Button>

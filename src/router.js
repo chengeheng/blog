@@ -1,4 +1,4 @@
-import { transComponent } from "./parseRoute";
+// import { transComponent } from "./parseRoute";
 import Home from "./pages/home";
 import Note from "./pages/note";
 import NoteDetail from "./pages/note/noteDetail";
