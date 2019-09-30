@@ -1,6 +1,6 @@
 // import { transComponent } from "./parseRoute";
 import Home from "./pages/home";
-import Note from "./pages/note";
+import Note from "./pages/note/main";
 import NoteDetail from "./pages/note/noteDetail";
 export const routers = [
 	{
@@ -11,14 +11,7 @@ export const routers = [
 	{
 		path: "/note",
 		component: Note,
-		title: "Note",
-		children: [
-			{
-				path: "/:id",
-				component: NoteDetail,
-				title: "Note"
-			}
-		]
+		title: "Note"
 	},
 	{
 		path: "/note/:id",

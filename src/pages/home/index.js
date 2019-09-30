@@ -15,7 +15,6 @@ const HomePage = props => {
 			<div className={styles.left}>
 				<div className={styles.head_portrait} />
 				<div className={styles.introduce}></div>
-				{/* <A></A> */}
 			</div>
 			<div className={styles.introduction}>
 				<Info className={styles.introduce_info} />
