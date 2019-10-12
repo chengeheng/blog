@@ -9,9 +9,9 @@ const path = require("path");
 
 module.exports = override(
 	// 参考https://www.jianshu.com/p/e1dbb940968d
-	fixBabelImports("import", {
+	fixBabelImports("antd", {
 		libraryName: "antd",
-		libraryDirectory: "es"
+		libraryDirectory: "lib"
 		// style: true
 	}),
 	addLessLoader({

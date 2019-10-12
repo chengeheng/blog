@@ -6,6 +6,7 @@ import { getMdNote } from "./actions";
 import marked from "marked";
 import hljs from "highlight.js";
 import { Spin, Button } from "antd";
+import { ReactComponent as PreviousSVG } from "images/note/previous.svg";
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
@@ -38,18 +39,18 @@ const NoteDetail = props => {
 
 	return (
 		<div className={styles.main}>
+			<div className={styles.toolBar}>
+				<PreviousSVG
+					className={styles.previous}
+					onClick={() => {
+						// history.goBack();
+						history.push("/note");
+					}}
+				>
+					返回
+				</PreviousSVG>
+			</div>
 			<div className={styles.body}>
-				<div className={styles.toolBar}>
-					<div className={styles.detail_return}>
-						<Button
-							onClick={() => {
-								history.goBack();
-							}}
-						>
-							返回
-						</Button>
-					</div>
-				</div>
 				<Spin spinning={getting}>
 					<div
 						className="content-md"
