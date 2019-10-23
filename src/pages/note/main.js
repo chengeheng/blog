@@ -42,6 +42,7 @@ const NoteMain = _ => {
 						{dataSource.map((item, index) => (
 							<NoteItem
 								key={index + 1}
+								index={index + 1}
 								id={item._id}
 								{...item}
 							></NoteItem>
