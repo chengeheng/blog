@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./main.module.less";
-import { userData } from "utils/constant";
 import { Spin, Button } from "antd";
 import NoteItem from "./components/noteItem";
 import NewNote from "./components/newNote";
@@ -12,11 +11,11 @@ const MAIN_NOTE = "MAIN_NOTE";
 const NoteMain = _ => {
 	const dispatch = useDispatch();
 	const [visible, setVisible] = useState(false);
-	const { isAdmin } = userData;
 	const localState = useSelector(state => ({
 		dataSource: state.data[MAIN_NOTE] ? state.data[MAIN_NOTE] : [],
 		getting: !state.data[MAIN_NOTE]
 	}));
+	const { isAdmin } = useSelector(state => state.user);
 	const { dataSource, getting } = localState;
 	useEffect(() => {
 		dispatch(getNote(MAIN_NOTE));

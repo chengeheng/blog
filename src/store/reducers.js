@@ -6,14 +6,30 @@ import { combineReducers } from "redux";
 import defaultState from "./state.js";
 
 export const UPDATE_DATA = "UPDATE_DATA";
+export const UPDATE_USER = "UPDATE_USER";
 export const FETCH_LOADING_SUCCESS = "FETCH_LOADING_SUCCESS";
 export const FETCH_LOADING_FAIL = "FETCH_LOADING_FAIL";
+
 const dataReducer = function(state = defaultState.data, action) {
 	switch (action.type) {
 		case UPDATE_DATA: {
 			return {
 				...state,
 				[action.stateId]: action.data
+			};
+		}
+
+		default:
+			return state;
+	}
+};
+
+const userReducer = function(state = defaultState.user, action) {
+	switch (action.type) {
+		case UPDATE_USER: {
+			return {
+				...state,
+				...action.data
 			};
 		}
 
@@ -42,6 +58,6 @@ const loadingReducer = function(state = {}, action) {
 // 导出所有reducer
 export default combineReducers({
 	data: dataReducer,
-	loading: loadingReducer
-	// user: userReducer
+	loading: loadingReducer,
+	user: userReducer
 });

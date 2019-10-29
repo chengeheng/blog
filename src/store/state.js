@@ -5,7 +5,7 @@
 // 同步数据：pageTitle
 // 异步数据：infoList（将来用异步接口获取）
 export default {
-	user: {},
+	user: { isAdmin: false },
 	data: {},
 	loading: {}
 };
