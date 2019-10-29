@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMdNote } from "./actions";
 import marked from "marked";
 import hljs from "highlight.js";
-import { Spin, Button } from "antd";
+import { Spin } from "antd";
 import { ReactComponent as PreviousSVG } from "images/note/previous.svg";
+import { getUrlParamHash } from "utils/utils";
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
@@ -24,10 +25,8 @@ const DETAIL_NOTE = "DETAIL_NOTE";
 
 const NoteDetail = props => {
 	const dispatch = useDispatch();
-	const { match, history } = props;
-
-	const { params } = match;
-	const { id } = params;
+	const { history } = props;
+	const { id } = getUrlParamHash();
 	const localState = useSelector(state => ({
 		data: state.data[DETAIL_NOTE] ? state.data[DETAIL_NOTE] : "",
 		getting: !state.data[DETAIL_NOTE]

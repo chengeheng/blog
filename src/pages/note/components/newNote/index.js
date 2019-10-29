@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./index.module.less";
 import { Modal, Form, Input, Upload, Button } from "antd";
 const TextArea = Input.TextArea;
 
 const NewNote = props => {
 	const { form, visible = false, changeVisible = () => {} } = props;
-	console.log(props);
 	const { getFieldDecorator } = form;
 	const formItemLayout = {
 		labelCol: {

@@ -10,11 +10,11 @@ const NoteDetail = props => {
 		<div className={styles.main}>
 			<div
 				className={`${styles.left} ${styles[background]}`}
-				onClick={() => jumpToPage(`/note/${id}`)}
+				onClick={() => jumpToPage(`/notedetail?id=${id}`)}
 			/>
 			<div className={styles.right}>
 				<div className={styles.title}>
-					<Link to={`/note/${id}`}>{name}</Link>
+					<Link to={`/notedetail?id=${id}`}>{name}</Link>
 				</div>
 				<div className={styles.middle_info}>
 					<div className={styles.middle_info_time}>

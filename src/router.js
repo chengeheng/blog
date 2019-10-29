@@ -19,7 +19,7 @@ export const routers = [
 		title: "Note"
 	},
 	{
-		path: "/note/:id",
+		path: "/notedetail",
 		component: NoteDetail,
 		title: "Note"
 	}

@@ -27,3 +27,18 @@ export const jumpToPage = (url, params = {}) => {
 	// window.history.go(0);
 	window.location.href = url + (paramsUrl ? `?${paramsUrl}` : "");
 };
+
+// 提取url中的解析字符串
+export const getUrlParamHash = () => {
+	let url = window.location.href;
+	let str = url.split("?")[1];
+	let items = str.split("&");
+	let result = {};
+	let res = {};
+	let len = items.length;
+	for (var i = 0; i < len; ++i) {
+		res = items[i].split("=");
+		result[res[0]] = res[1];
+	}
+	return result;
+};
