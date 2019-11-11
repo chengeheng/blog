@@ -51,12 +51,7 @@ const dispatch = action => {
 
 const cghFetch = async (
 	stateId,
-	{
-		url,
-		method,
-		headers = { "Content-Type": "application/x-www-form-urlencoded" },
-		body
-	}
+	{ url, method, headers = { "Content-Type": "application/json" }, body }
 ) =>
 	await request(
 		stateId,

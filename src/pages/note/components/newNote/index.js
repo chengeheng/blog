@@ -1,9 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styles from "./index.module.less";
-import { Modal, Form, Input, Upload, Button } from "antd";
+import { Modal, Form, Input, Upload, Button, message } from "antd";
+import moment from "moment";
+import { addNote } from "../../actions/index";
 const TextArea = Input.TextArea;
 
 const NewNote = props => {
+	const dispatch = useDispatch();
 	const { form, visible = false, changeVisible = () => {} } = props;
 	const { getFieldDecorator } = form;
 	const formItemLayout = {
@@ -18,8 +22,25 @@ const NewNote = props => {
 	const handleSubmit = _ => {
 		const { validateFields } = form;
 		validateFields((err, values) => {
-			console.log(values);
+			const createTime = moment().valueOf();
+			if (err) {
+				return;
+			} else {
+				dispatch(
+					addNote({
+						...values,
+						createTime
+					})
+				).then(_ => {
+					message.success("新增成功");
+					changeVisible(false);
+				});
+			}
 		});
+	};
+
+	const uploadProps = {
+		action: "/notes/detail/add"
 	};
 
 	return (
@@ -29,6 +50,7 @@ const NewNote = props => {
 			onCancel={changeVisible}
 			onOk={handleSubmit}
 			className={styles.main}
+			maskClosable={false}
 		>
 			<Form {...formItemLayout}>
 				<Form.Item label="标题">
@@ -57,11 +79,9 @@ const NewNote = props => {
 					)}
 				</Form.Item>
 				<Form.Item label="md文档">
-					{getFieldDecorator("mdFile", {})(
-						<Upload name="md文档">
-							<Button>上传附件</Button>
-						</Upload>
-					)}
+					<Upload {...uploadProps}>
+						<Button>上传附件</Button>
+					</Upload>
 				</Form.Item>
 				<Form.Item label="作者">
 					{getFieldDecorator("author", {

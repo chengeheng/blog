@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./main.module.less";
 import { Spin, Button } from "antd";
@@ -17,9 +17,13 @@ const NoteMain = _ => {
 	}));
 	const { isAdmin } = useSelector(state => state.user);
 	const { dataSource, getting } = localState;
-	useEffect(() => {
+
+	const getGrid = useCallback(() => {
 		dispatch(getNote(MAIN_NOTE));
 	}, [dispatch]);
+	useEffect(() => {
+		getGrid();
+	}, [getGrid]);
 	// 打开新增笔记面板
 	const addNewNote = () => {
 		setVisible(true);
@@ -49,8 +53,13 @@ const NoteMain = _ => {
 					</Spin>
 					<NewNote
 						visible={visible}
-						changeVisible={() => {
-							setVisible(!visible);
+						changeVisible={value => {
+							if (!value) {
+								setVisible(false);
+								getGrid();
+							} else {
+								setVisible(!visible);
+							}
 						}}
 					/>
 				</div>
