@@ -11,3 +11,9 @@ export const addNote = value => () =>
 		method: "POST",
 		body: JSON.stringify(value)
 	});
+
+export const getNoteList = stateId => () =>
+	cghFetch(stateId, {
+		url: "/notes/listOrderByYear",
+		method: "GET"
+	});
