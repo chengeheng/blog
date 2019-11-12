@@ -27,8 +27,7 @@ const IndexPage = props => {
 	return (
 		<div className={styles.layout}>
 			<div className={styles.main}>
-				<div className={styles.logo}>CGH</div>
-				<div className={styles.blank}></div>
+				<div className={styles.logo}>陈葛恒</div>
 				<div className={styles.menu}>
 					{menuRouters.map(item => (
 						<div
