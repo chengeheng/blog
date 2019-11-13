@@ -35,6 +35,7 @@ h6 {
 	/* 图片居中 */
 	margin: 0 auto;
 	display: flex;
+	width: 100%;
 }
 
 .content-md {
