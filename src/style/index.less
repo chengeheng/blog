@@ -1,6 +1,8 @@
-@import "./antd.less";
 @import "./theme.less";
-
+html {
+	height: 100%;
+	width: 100%;
+}
 body {
 	margin: 0;
 	height: 100%;
@@ -11,11 +13,19 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-#root {
-	height: 100%;
-	width: 100%;
-	background-image: url("~images/bg.jpg");
-	min-height: 766px;
+
+@media screen and (min-width: 901px) {
+	#root {
+		height: 100%;
+		width: 100%;
+		min-height: 766px;
+	}
+}
+@media screen and (max-width: 900px) {
+	#root {
+		height: 100%;
+		width: 100%;
+	}
 }
 
 ::-webkit-scrollbar {

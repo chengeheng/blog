@@ -42,13 +42,13 @@ const loadingReducer = function(state = {}, action) {
 		case FETCH_LOADING_SUCCESS: {
 			return {
 				...state,
-				[action.stateId]: action.data
+				[action.stateId]: (state[action.stateId] || 0) + 1
 			};
 		}
 		case FETCH_LOADING_FAIL: {
 			return {
 				...state,
-				[action.stateId]: action.data
+				[action.stateId]: (state[action.stateId] || 0) - 1
 			};
 		}
 		default:

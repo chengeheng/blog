@@ -6,32 +6,34 @@ import { useDispatch } from "react-redux";
 
 const IndexPage = props => {
 	const [selectedKey, setSelectedKey] = useState("/home"); // 选中key
-
-	const { routes, history } = props;
+	const [contentKey, setContentKey] = useState(0);
+	const { routes, menuRouters, history } = props;
 	const content = useMemo(() => parseRoute(routes), [routes]);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// dispatch(getUserData(MAIN_DATA));
 		setSelectedKey(window.location.pathname);
 	}, [dispatch]);
 
 	// 菜单单击事件
 	const handleClick = key => {
-		history.push(key);
-		setSelectedKey(key);
+		if (props.location.pathname === key) {
+			setContentKey(v => v + 1);
+		} else {
+			history.push(key);
+			setSelectedKey(key);
+		}
 	};
 	return (
 		<div className={styles.layout}>
 			<div className={styles.main}>
-				<div className={styles.logo}>CGH</div>
-				<div className={styles.blank}></div>
+				<div className={styles.logo}>陈葛恒</div>
 				<div className={styles.menu}>
-					{routes.map(item => (
+					{menuRouters.map(item => (
 						<div
 							key={item.path}
 							className={
-								item.path == selectedKey
+								item.path === selectedKey
 									? styles.menu_item_selected
 									: styles.menu_item
 							}
@@ -46,7 +48,9 @@ const IndexPage = props => {
 					))}
 				</div>
 			</div>
-			<div className={styles.body}>{content}</div>
+			<div className={styles.body} key={contentKey}>
+				{content}
+			</div>
 		</div>
 	);
 };

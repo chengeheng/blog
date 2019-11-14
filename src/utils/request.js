@@ -49,7 +49,7 @@ const dispatch = action => {
 	return action.stateId !== undefined && store.dispatch(action);
 };
 
-const cghFetch = async (
+export const cghFetch = async (
 	stateId,
 	{ url, method, headers = { "Content-Type": "application/json" }, body }
 ) =>
@@ -86,4 +86,10 @@ const cghFetch = async (
 		}
 	);
 
-export default cghFetch;
+export const cghDelete = stateId => {
+	dispatch({
+		type: UPDATE_DATA,
+		stateId,
+		data: null
+	});
+};

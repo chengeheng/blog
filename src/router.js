@@ -1,27 +1,25 @@
-// import { transComponent } from "./parseRoute";
-import { lazy } from "react";
-// import Home from "./pages/home";
-// import Note from "./pages/note/main";
-// import NoteDetail from "./pages/note/noteDetail";
+import { transComponent } from "./parseRoute";
 
-const Home = lazy(() => import("./pages/home"));
-const Note = lazy(() => import("./pages/note/main"));
-const NoteDetail = lazy(() => import("./pages/note/noteDetail"));
-export const routers = [
-	{
-		path: "/",
-		component: Home,
-		title: "Home"
-	},
+const menuRouters = [
 	{
 		path: "/note",
-		component: Note,
-		title: "Note"
-	},
-	{
-		path: "/notedetail",
-		component: NoteDetail,
+		component: () => import("./pages/note/main"),
 		title: "Note"
 	}
 ];
-// ].map(transComponent);
+export const routers = [
+	{
+		path: "/",
+		component: () => import("./pages/index"),
+		title: "Main",
+		menuRouters: menuRouters,
+		children: [
+			...menuRouters,
+			{
+				path: "/noteDetail",
+				component: () => import("./pages/note/noteDetail"),
+				title: "noteDetail"
+			}
+		]
+	}
+].map(transComponent);

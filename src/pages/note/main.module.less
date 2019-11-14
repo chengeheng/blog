@@ -1,27 +1,67 @@
 @import "~style/index";
-.main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: @empty_Color;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
-	.body {
-		width: 100%;
-		flex: 1;
+
+@media screen and (min-width: 901px) {
+	.main {
 		display: flex;
 		flex-direction: column;
-		max-width: 900px;
-		padding: 10px;
-		.mian_note {
+		align-items: center;
+		background-color: @empty_Color;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		.body {
+			width: 100%;
+			flex: 1;
 			display: flex;
 			flex-direction: column;
-			justify-content: flex-start;
-			.note_add {
-				width: 100px;
-				margin: 10px;
+			max-width: 900px;
+			padding: 10px;
+			.mian_note {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				.note_add {
+					width: 100px;
+					margin: 10px;
+				}
 			}
+		}
+		.copyright {
+			height: 62px;
+			width: 80%;
+			border-top: 1px solid @white-3;
+		}
+	}
+}
+@media screen and (max-width: 900px) {
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: @empty_Color;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		.body {
+			width: 100%;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			max-width: 900px;
+			.mian_note {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				.note_add {
+					width: 100px;
+					margin: 10px;
+				}
+			}
+		}
+		.copyright {
+			height: 62px;
+			width: 80%;
+			border-top: 1px solid @white-3;
 		}
 	}
 }

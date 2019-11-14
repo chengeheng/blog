@@ -1,36 +1,127 @@
 @import "~style/theme";
-.main {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: @empty_Color;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
-	.body {
-		width: 100%;
-		flex: 1;
+
+@media screen and (min-width: 901px) {
+	.main {
 		display: flex;
 		flex-direction: column;
-		max-width: 900px;
-		padding: 10px;
-		background-color: @background_Color;
-		border-radius: @border-radius;
-		padding: 10px 30px;
-	}
-	.toolBar {
-		width: 100%;
-		height: 50px;
-		position: fixed;
-		display: flex;
-		flex-direction: row;
 		align-items: center;
-		padding-left: 30px;
-		.previous {
-			height: 48px;
-			width: 48px;
-			cursor: pointer;
-			fill: @base_Color;
+		background-color: @empty_Color;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		padding-top: 10px;
+		.title {
+			padding: 10px 30px;
+			height: 77px;
+			width: 100%;
+			max-width: 900px;
+			display: flex;
+			flex-direction: column;
+			background-color: @background_Color;
+			border-radius: @border-radius;
+			.title_name {
+				margin: 0 0 10px;
+				line-height: 1.4;
+				font-size: 1.5rem;
+				font-weight: 400;
+				font-family: "Open Sans", "PingFang SC", "Hiragino Sans GB",
+					"Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+			}
+			.title_date {
+				color: @white-4;
+				display: block;
+				font-size: 14px;
+				margin-bottom: 10px;
+				height: 20px;
+				line-height: 20px;
+			}
+		}
+		.body {
+			width: 100%;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			max-width: 900px;
+			padding: 10px;
+			background-color: @background_Color;
+			border-radius: @border-radius;
+			padding: 10px 30px;
+		}
+		.toolBar {
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding-left: 30px;
+			.previous {
+				height: 48px;
+				width: 48px;
+				cursor: pointer;
+				fill: @base_Color;
+			}
+		}
+	}
+}
+@media screen and (max-width: 900px) {
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: @empty_Color;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		.title {
+			padding: 10px 30px;
+			height: 77px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			background-color: @background_Color;
+			border-radius: @border-radius;
+			.title_name {
+				margin: 0 0 10px;
+				line-height: 1.4;
+				font-size: 1.5rem;
+				font-weight: 400;
+				font-family: "Open Sans", "PingFang SC", "Hiragino Sans GB",
+					"Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+			}
+			.title_date {
+				color: @white-4;
+				display: block;
+				font-size: 14px;
+				margin-bottom: 10px;
+				height: 20px;
+				line-height: 20px;
+			}
+		}
+		.body {
+			width: 100%;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			padding: 10px;
+			background-color: @background_Color;
+			border-radius: @border-radius;
+			padding: 10px 30px;
+		}
+		.toolBar {
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding-left: 30px;
+			.previous {
+				height: 48px;
+				width: 48px;
+				cursor: pointer;
+				fill: @base_Color;
+			}
 		}
 	}
 }
