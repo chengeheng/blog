@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@babel/plugin-proposal-decorators": "^7.6.0",
 		"highlight.js": "^9.15.10",
 		"marked": "^0.7.0",
 		"moment": "^2.24.0",
