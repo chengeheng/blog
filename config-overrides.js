@@ -11,11 +11,11 @@ const path = require("path");
 const addCustomize = () => config => {
 	if (process.env.NODE_ENV === "production") {
 		config.devtool = false; //去掉map文件
-		config.module.rules.push({
-			loader: "webpack-ant-icon-loader",
-			enforce: "pre",
-			include: [require.resolve("@ant-design/icons/lib/dist")]
-		});
+		// config.module.rules.push({
+		// 	loader: "webpack-ant-icon-loader",
+		// 	enforce: "pre",
+		// 	include: [require.resolve("@ant-design/icons/lib/dist")]
+		// });
 		let splitChunksConfig = config.optimization.splitChunks;
 
 		// if (config.entry && config.entry instanceof Array) {

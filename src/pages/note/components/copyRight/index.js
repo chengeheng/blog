@@ -12,6 +12,7 @@ const CopyRight = props => {
 			<div className={styles.bottom}>
 				工信部备案：
 				<a
+					className={styles.bottom_a}
 					rel="noopener noreferrer"
 					href="http://www.beian.miit.gov.cn"
 					target="_blank"
