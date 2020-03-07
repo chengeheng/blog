@@ -8,13 +8,15 @@ import hljs from "highlight.js";
 import Loading from "cgh-ui/components/Loading";
 import moment from "moment";
 import { getUrlParamHash } from "utils/utils";
+let renderer = new marked.Renderer();
+console.log(renderer);
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
 	tables: true,
 	breaks: true,
 	pedantic: false,
-	sanitize: true,
+	sanitize: false,
 	smartLists: true,
 	smartypants: false,
 	highlight: function(code) {
