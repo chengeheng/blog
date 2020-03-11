@@ -8,8 +8,6 @@ import hljs from "highlight.js";
 import Loading from "cgh-ui/components/Loading";
 import moment from "moment";
 import { getUrlParamHash } from "utils/utils";
-let renderer = new marked.Renderer();
-console.log(renderer);
 marked.setOptions({
 	renderer: new marked.Renderer(),
 	gfm: true,
